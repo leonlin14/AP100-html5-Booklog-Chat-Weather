@@ -15,7 +15,9 @@
 				.appendTo('#content');
 	    },
 	    complete: function(jqXHR, textStatus) {
+            
 	    }
 	});
 }) ($);
+
 

@@ -11,8 +11,10 @@ var path = require('path');
 var hello = require('./routes/hello');
 var discussion = require('./routes/discussion');
 
+
 var chat = require('./routes/chat');
 var cors = require('cors');
+
 
 
 var app = express();
@@ -43,7 +45,7 @@ app.post('/discussion/:message', discussion.create);
 app.get('/discussion/latest/:items', discussion.read);
 
 
-app.get('/start', cors(),chat.start);
+app.get('/start', cors(), chat.start);
 app.post('/send/:message', cors(), chat.send);
 
 

@@ -6,6 +6,7 @@
 * To change this template use Tools | Templates.
 */
 
+
 /*
  * GET chat messages
  */
@@ -16,7 +17,7 @@ exports.start = function(req, res){
     var json;
     
     json = {
-        data: history    
+        data: history
     };
     
     res.send(json);
@@ -27,8 +28,8 @@ exports.start = function(req, res){
  */
 
 exports.send = function(req, res){
-    var obj = {};
     var msg = req.params.message;
+    var obj = {};
     var milliseconds = new Date().getTime();
     
     obj.message = msg;
@@ -36,6 +37,5 @@ exports.send = function(req, res){
     
     history.push(obj);
     
-    res.send("Receive message: " + meg);
-    
+    res.send("Receive message: " + msg);
 };
