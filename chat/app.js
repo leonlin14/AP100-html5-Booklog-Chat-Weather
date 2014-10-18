@@ -11,6 +11,9 @@ var path = require('path');
 var hello = require('./routes/hello');
 var discussion = require('./routes/discussion');
 
+var chat = require('./routes/chat');
+
+
 var app = express();
 
 // all environments
@@ -37,6 +40,11 @@ app.get('/user/:username', user.index);
 
 app.post('/discussion/:message', discussion.create);
 app.get('/discussion/latest/:items', discussion.read);
+
+
+app.get('/start', chat.start);
+app.post('/send', chat.send);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
