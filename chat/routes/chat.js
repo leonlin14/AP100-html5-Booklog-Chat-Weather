@@ -10,8 +10,16 @@
  * GET chat messages
  */
 
+var history = [];
+
 exports.start = function(req, res){
-    res.send("Start chatting: " + req.params.username);
+    var json;
+    
+    json = {
+        data: history    
+    };
+    
+    res.send(json);
 };
 
 /*
@@ -19,5 +27,15 @@ exports.start = function(req, res){
  */
 
 exports.send = function(req, res){
-    res.send("Receive message: " + req.params.username);
+    var obj = {};
+    var msg = req.params.message;
+    var milliseconds = new Date().getTime();
+    
+    obj.message = msg;
+    obj.timestamp = milliseconds;
+    
+    history.push(obj);
+    
+    res.send("Receive message: " + meg);
+    
 };

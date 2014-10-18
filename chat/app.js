@@ -43,7 +43,7 @@ app.get('/discussion/latest/:items', discussion.read);
 
 
 app.get('/start', chat.start);
-app.post('/send', chat.send);
+app.post('/send/:message', chat.send);
 
 
 http.createServer(app).listen(app.get('port'), function(){
