@@ -24,6 +24,13 @@
         </div>
     </script>
 
+    <script id='chatTemplate' type='text/x-jquery-tmpl'>
+        <div class="col-md-6 col-md-offset-3 text-center" style="background: #FF2080; color: #FFF; padding: 30px;>
+            <p style="font-size: 3em;">${celsius} ℃</p>
+            <i class="wi ${weatherIcon}" style="font-size: 3em;"></i>
+        </div>
+    </script>
+    
     <div class="container">
         <div class="row" id="content">
         </div>
@@ -34,7 +41,8 @@
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
 	<script src='javascripts/jquery-tmpl/jquery.tmpl.min.js'></script>
-	<script src='javascripts/main.js?v=0.1'></script>
+	<script src='javascripts/main.js'></script>
+	<script src='javascripts/chat.js'></script>
 </body>
 
 </html>
