@@ -28,7 +28,7 @@
             
 			$('#chatTemplate')
 				.tmpl(messages.reverse().slice(0, 1))
-				.appendTo(self);
+				.prependTo(self);
             
             $('.timestamp').each(function() {
                 var me = $(this);

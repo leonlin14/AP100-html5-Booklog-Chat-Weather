@@ -13,7 +13,6 @@
             }
         });
     });
-        
 	$.ajax({
 		dataType: 'json',
 		url: 'http://api.openweathermap.org/data/2.5/weather?q=Taipei',
@@ -42,7 +41,7 @@
             $('#weather-icon').addClass('wi-day-cloudy');
 	    },
 	    complete: function(jqXHR, textStatus) {
-            $('#content').createWebSocket();
+            $('#board').createWebSocket();
 	    }
 	});
 }) ($);
