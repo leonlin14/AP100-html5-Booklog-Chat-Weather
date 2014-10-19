@@ -24,7 +24,8 @@
             $('.timestamp').each(function() {
                 var me = $(this);
                 var timestamp = me.html();
-                alert(timestamp);
+                //alert(timestamp);
+                
                 me.html(moment(timestamp).fromNow());
             });
 	    }

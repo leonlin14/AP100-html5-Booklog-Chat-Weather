@@ -23,6 +23,10 @@
             $('[data-status="Error"]').removeClass('hide');
         };
         ws.onmessage = function(evt) {
+            var messages = JSON.parse(evt.data);
+			$('#chatTemplate')
+				.tmpl(messages.reverse().slice(0, 1))
+				.appendTo('#content');
         };
     };
 }) ();

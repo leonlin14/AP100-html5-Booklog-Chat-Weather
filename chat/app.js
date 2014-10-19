@@ -14,7 +14,6 @@ var discussion = require('./routes/discussion');
 
 var chat = require('./routes/chat');
 var cors = require('cors');
-
 var WebSocketServer = require('websocket').server;
 
 
@@ -62,6 +61,9 @@ var wsServer = new WebSocketServer({
   autoAcceptConnections: false
 }); 
 
+// create WebSocket connections array
+app.clients = [];
+
 function onWsConnMessage(message) {
   if (message.type == 'utf8') {
     console.log('Received message: ' + message.utf8Data);
@@ -77,6 +79,8 @@ function onWsConnClose(reasonCode, description) {
 function onWsRequest(request) {
   var connection = request.accept('echo-protocol', request.origin);
   console.log("WebSocket connection accepted.");
+    
+  app.clients.push(connection);
 
   connection.on('message', onWsConnMessage);
   connection.on('close', onWsConnClose);
