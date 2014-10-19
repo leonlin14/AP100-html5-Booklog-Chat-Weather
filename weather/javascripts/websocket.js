@@ -9,6 +9,7 @@
 */
 (function() {
     $.fn.createWebSocket = function() {
+        var self = this;
         var ws = new WebSocket("ws://deposit-simple.codio.io:3000/", "echo-protocol"); 
         ws.onopen = function(evt) {
             $('[data-status]').addClass('hide');
@@ -27,7 +28,7 @@
             
 			$('#chatTemplate')
 				.tmpl(messages.reverse().slice(0, 1))
-				.appendTo('#content');
+				.appendTo(self);
             
             $('.timestamp').each(function() {
                 var me = $(this);
