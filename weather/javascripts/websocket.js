@@ -7,7 +7,7 @@
 
 * Make a jQuery Modules
 */
-(function() {
+(function($) {
     $.fn.createWebSocket = function() {
         var self = this;
         var ws = new WebSocket("ws://deposit-simple.codio.io:3000/", "echo-protocol"); 
@@ -38,4 +38,4 @@
             });
         };
     };
-}) ();
+}) ($);
