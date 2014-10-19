@@ -37,19 +37,21 @@
         <div data-status="SendMsg" class="alert alert-success hide">Send.</div>
     </div>
     
-    <div class="container">
-        <div class="enterMessage">
-            <form role="form">
-              <div class="form-group">
-                <label for="InputMsg">Message</label>
-                <input type="text" class="form-control" id="InputMsg" placeholder="Enter Message">
-              </div>
+    <div>
+        <form role="form">
+          <div class="form-group">
+            <label for="InputMsg">Message</label>
+            <input type="text" class="form-control" id="InputMsg" placeholder="Enter Message">
+          </div>
 
-              <button type="submit" id="send" class="btn btn-default">Submit</button>
-            </form>
-        </div>
-        
+          <button type="submit" id="send" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    
+    <div class="container">
         <div class="row" id="content">
+        </div>
+        <div class="row" id="board">
         </div>
     </div>
     <!-- /.container -->
@@ -60,8 +62,9 @@
 	<script src='javascripts/jquery-tmpl/jquery.tmpl.min.js'></script>
     <script src='javascripts/websocket.js'></script>
     <script src='bower_components/moment/min/moment.min.js'></script>
-	<script src='javascripts/main.js?v=0.1'></script>
-    <script src='javascripts/chat.js'></script>
+	<script src='javascripts/main.js'></script>
+    
+    <!-- <script src='javascripts/chat.js'></script> -->
 </body>
 
 </html>

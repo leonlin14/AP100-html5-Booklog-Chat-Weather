@@ -42,7 +42,17 @@
             $('#weather-icon').addClass('wi-day-cloudy');
 	    },
 	    complete: function(jqXHR, textStatus) {
-            $('#content').createWebSocket();
+            $('#board').createWebSocket({
+                // SPA Principle: use callback
+                onmessage: function() {
+                    $('.timestamp').each(function() {
+                        var me = $(this);
+                        var timestamp = me.html();
+
+                        me.html(moment(timestamp).fromNow());
+                    });
+                }
+            });
 	    }
 	});
 }) ($);

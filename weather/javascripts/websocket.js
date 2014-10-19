@@ -8,7 +8,7 @@
 * Make a jQuery Modules
 */
 (function($) {
-    $.fn.createWebSocket = function() {
+    $.fn.createWebSocket = function(cb) {
         var self = this;
         var ws = new WebSocket("ws://deposit-simple.codio.io:3000/", "echo-protocol"); 
         ws.onopen = function(evt) {
@@ -25,17 +25,13 @@
         };
         ws.onmessage = function(evt) {
             var messages = JSON.parse(evt.data);
-            
 			$('#chatTemplate')
 				.tmpl(messages.reverse().slice(0, 1))
-				.appendTo(self);
+				.prependTo(self); 
             
-            $('.timestamp').each(function() {
-                var me = $(this);
-                var timestamp = me.html();
-                
-                me.html(moment(timestamp).fromNow());
-            });
+            if (cb && cb.onmessage === 'function') {
+                cb.onmessage();
+            }
         };
     };
 }) ($);
