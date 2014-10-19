@@ -54,7 +54,32 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-wsServer = new WebSocketServer({
+/*
+ *  WebSocket Section
+ */
+var wsServer = new WebSocketServer({
   httpServer: server,
   autoAcceptConnections: false
 }); 
+
+function onWsConnMessage(message) {
+  if (message.type == 'utf8') {
+    console.log('Received message: ' + message.utf8Data);
+  } else if (message.type == 'binary') {
+    console.log('Received binary data.');
+  }
+}
+
+function onWsConnClose(reasonCode, description) {
+  console.log(' Peer disconnected with reason: ' + reasonCode);
+}
+
+function onWsRequest(request) {
+  var connection = request.accept('echo-protocol', request.origin);
+  console.log("WebSocket connection accepted.");
+
+  connection.on('message', onWsConnMessage);
+  connection.on('close', onWsConnClose);
+}
+
+wsServer.on('request', onWsRequest); 
