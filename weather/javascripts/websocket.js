@@ -24,9 +24,17 @@
         };
         ws.onmessage = function(evt) {
             var messages = JSON.parse(evt.data);
+            
 			$('#chatTemplate')
 				.tmpl(messages.reverse().slice(0, 1))
 				.appendTo('#content');
+            
+            $('.timestamp').each(function() {
+                var me = $(this);
+                var timestamp = me.html();
+                
+                me.html(moment(timestamp).fromNow());
+            });
         };
     };
 }) ();
