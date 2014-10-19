@@ -7,21 +7,22 @@
 
 * Make a jQuery Modules
 */
-
-$.fn.createWebSocket = function() {
-    var ws = new WebSocket("ws://deposit-simple.codio.io:3000/", "echo-protocol"); 
-    ws.onopen = function(evt) {
-        $('[data-status]').addClass('hide');
-        $('[data-status="Success"]').removeClass('hide');
+(function() {
+    $.fn.createWebSocket = function() {
+        var ws = new WebSocket("ws://deposit-simple.codio.io:3000/", "echo-protocol"); 
+        ws.onopen = function(evt) {
+            $('[data-status]').addClass('hide');
+            $('[data-status="Success"]').removeClass('hide');
+        };
+        ws.onclose = function(evt) {
+            $('[data-status]').addClass('hide');
+            $('[data-status="Close"]').removeClass('hide');
+        };
+        ws.onerror = function(evt) {
+            $('[data-status]').addClass('hide');
+            $('[data-status="Error"]').removeClass('hide');
+        };
+        ws.onmessage = function(evt) {
+        };
     };
-    ws.onclose = function(evt) {
-        $('[data-status]').addClass('hide');
-        $('[data-status="Close"]').removeClass('hide');
-    };
-    ws.onerror = function(evt) {
-        $('[data-status]').addClass('hide');
-        $('[data-status="Error"]').removeClass('hide');
-    };
-    ws.onmessage = function(evt) {
-    };
-};
+}) ();
