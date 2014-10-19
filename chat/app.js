@@ -15,6 +15,7 @@ var discussion = require('./routes/discussion');
 var chat = require('./routes/chat');
 var cors = require('cors');
 
+var WebSocketServer = require('websocket').server;
 
 
 var app = express();
