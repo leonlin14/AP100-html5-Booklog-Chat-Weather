@@ -29,14 +29,26 @@
             <p style="font-size: 1.2em;">${message}, <span class="timestamp">${timestamp}</span></p>
         </div>
     </script>
-    
+  
     <div class="status">
         <div data-status="Success" class="alert alert-info hide">Connected.</div>
-        <div data-status="Error" class="alert alert-danger hide">failed.</div>
-        <div data-status="Close" class="alert alert-warning hide">closed</div>
+        <div data-status="Error" class="alert alert-danger hide">Failed.</div>
+        <div data-status="Close" class="alert alert-warning hide">Closed.</div>
+        <div data-status="SendMsg" class="alert alert-success hide">Send.</div>
     </div>
     
     <div class="container">
+        <div class="enterMessage">
+            <form role="form">
+              <div class="form-group">
+                <label for="InputMsg">Message</label>
+                <input type="text" class="form-control" id="InputMsg" placeholder="Enter Message">
+              </div>
+
+              <button type="submit" id="send" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        
         <div class="row" id="content">
         </div>
     </div>

@@ -1,4 +1,19 @@
 (function($) {
+    $('#send').on('click', function(event) {
+        event.preventDefault();
+        
+        var message = $("#InputMsg").val();
+        $.ajax({
+            dataType: 'json',
+            type: 'POST',
+            url: 'http://deposit-simple.codio.io:3000/send/' + message,
+            complete: function(jqXHR, textStatus) {
+                 $('[data-status]').addClass('hide');
+                 $('[data-status=SendMsg]').removeClass('hide'); 
+            }
+        });
+    });
+    
 	$.ajax({
 		dataType: 'json',
 		url: 'http://api.openweathermap.org/data/2.5/weather?q=Taipei',
